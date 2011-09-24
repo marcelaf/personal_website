@@ -16,21 +16,25 @@
     <%= f.text_field :customer %>
   </div>
   <div class="field">
-    <%= f.label :product_id %><br />
-    <%= f.number_field :product_id %>
-  </div>
-  <div class="field">
-    <%= f.label :quantity %><br />
-    <%= f.number_field :quantity %>
-  </div>
-  <div class="field">
     <%= f.label :date %><br />
     <%= f.date_select :date %>
   </div>
-  <div class="field">
-    <%= f.label :time %><br />
-    <%= f.time_select :time %>
-  </div>
+  
+  
+  
+  <table>
+  <%= fields_for :order_items do |l| %>
+    <tr>
+    <td><%= f.label :quantity %></td>
+    <td><%= f.label :product %></td>
+    </tr>
+    <tr>
+    <td><%= l.text_field :quantity %></td>
+    <td><%= collection_select(:order_items, :product_id, Product.all, :id, :name, {:include_blank => true})  %></td>
+    </tr>
+  <% end %>
+    </table> 
+      
   <div class="actions">
     <%= f.submit %>
   </div>

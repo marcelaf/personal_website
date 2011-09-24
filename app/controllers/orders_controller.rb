@@ -14,19 +14,21 @@ class OrdersController < ApplicationController
   # GET /orders/1.json
   def show
     @title = "View Orders"
-    @order = Order.find(params[:id])
+    #@order = Order.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render :json => @order }
+     # format.json { render :json => @order }
     end
   end
 
   # GET /orders/new
   # GET /orders/new.json
   def new
-    @title = "Add Order "
+    @title = "Add Order"
     @order = Order.new
+    @order_items = OrderItem.new
+    #2.times {@order.order_items.build}
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,17 +44,30 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
+  @title = "Add Order"
     @order = Order.new(params[:order])
-
+    @order_item = OrderItem.new(params[:order_items])
+    #@order.add_order_items(@order_items)
+    
     respond_to do |format|
-      if @order.save
-        format.html { redirect_to @order, :notice => 'Order was successfully created.' }
-        format.json { render :json => @order, :status => :created, :location => @order }
-      else
-        format.html { render :action => "new" }
-        format.json { render :json => @order.errors, :status => :unprocessable_entity }
+      Order.transaction do
+        @order.save!
+        @order_item.order_id = @order.id
+        @order_item.save!
+        format.html { redirect_to home_path, :notice => 'Order was successfully created.' }
+        format.json { render :json => @order, :status => :created, :location => @order }  
       end
     end
+    
+    #respond_to do |format|
+     # if @order.save && @order_item.save
+      #  format.html { redirect_to @order, :notice => 'Order was successfully created.' }
+       # format.json { render :json => @order, :status => :created, :location => @order }
+      #else
+       # format.html { render :action => "new" }
+       # format.json { render :json => @order.errors, :status => :unprocessable_entity }
+      #end
+    #end
   end
 
   # PUT /orders/1

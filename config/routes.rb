@@ -1,13 +1,13 @@
 PersonalWebsite::Application.routes.draw do
+  resources :order_items
   resources :orders
   resources :products
-  
-  get "pages/home"
-  
+
+  match '/home',   :to => 'pages#home'
   match '/addorder',   :to => 'orders#new'
   match '/addproduct',    :to => 'products#new'
   match '/vieworders', :to => 'orders#show'
-  match '/viewproducts',    :to => 'products#show'
+  match '/viewproducts',    :to => 'products#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
