@@ -4,11 +4,11 @@ class OrderItemsController < ApplicationController
   def index
     @order_items = OrderItem.all
     #@date = Date.parse('2011-09-23') #nuevo
-    if params[:dia]
-      @date = Date.parse('2011-09-23')
-    else
-      @date = Date.parse('2011-09-25')
-    end
+    #if params[:dia]
+     # @date = Date.parse('2011-09-23')
+    #else
+     # @date = Date.parse('2011-09-25')
+    #end
     
     #if params[:order]
      #   @date = Date.parse(params[:order][:"date(1i)"].to_i,params[:order][:"date(2i)"].to_i,params[:order][:"date(3i)"].to_i)
@@ -24,7 +24,12 @@ class OrderItemsController < ApplicationController
   # GET /order_items/1
   # GET /order_items/1.json
   def show
-    @order_item = OrderItem.find(params[:id])
+    #@order_item = OrderItem.find(params[:id])    linea original
+    @order_items = OrderItem.all
+    #@date = params[:id]
+    @date = Date.parse(params[:order][:"date(1i)"]+"-"+params[:order][:"date(2i)"]+"-"+params[:order][:"date(3i)"])
+    #@fecha = Date.civil(params[:order][:"date(1i)"].to_i,params[:order][:"date(2i)"].to_i,params[:order][:"date(3i)"].to_i)
+
 
     respond_to do |format|
       format.html # show.html.erb

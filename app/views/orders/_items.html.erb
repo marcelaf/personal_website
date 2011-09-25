@@ -1,0 +1,6 @@
+<%= fields_for :order_items do |l| %>
+        <tr>
+        <td><%= l.text_field(:quantity, :size => 5) %></td>
+        <td><%= collection_select(:order_items, :product_id, Product.all, :id, :name, {:include_blank => true})  %></td>
+        </tr>
+<% end %>

@@ -6,8 +6,9 @@ PersonalWebsite::Application.routes.draw do
   match '/home',   :to => 'pages#home'
   match '/addorder',   :to => 'orders#new'
   match '/addproduct',    :to => 'products#new'
-  match '/vieworders', :to => 'orders#show'
+  match '/vieworders', :to => 'order_items#index'
   match '/viewproducts',    :to => 'products#index'
+  match '/viewordersbydate',    :to => 'order_items#show'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

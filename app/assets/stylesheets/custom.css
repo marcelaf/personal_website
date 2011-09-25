@@ -3,11 +3,13 @@
 }
 
 body {
-  background: #cff;
+  background: #99ff99;
+  font-family: arial;
 }
 
 header {
   padding-top: 20px;
+  font-family: arial;
 }
 
 header img {
@@ -73,7 +75,7 @@ nav ul li a {
 }
 
 nav ul li a:visited {
-  color: #09c;
+  color: #006600;
 }
 
 nav ul li a:hover {

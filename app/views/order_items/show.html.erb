@@ -1,20 +1,45 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Order:</b>
-  <%= @order_item.order_id %>
-</p>
+<!--<p>-->
+  <!--<b>Order:</b>-->
+  <!--<!%= @order_item.order_id %>-->
+<!--</p>-->
+
+<!--<p>-->
+  <!--<b>Product:</b>-->
+  <!--<!%= @order_item.product_id %>-->
+<!--</p>-->
+
+<!--<p>-->
+  <!--<b>Quantity:</b>-->
+  <!--<!%= @order_item.quantity %>-->
+<!--</p>-->
 
 <p>
-  <b>Product:</b>
-  <%= @order_item.product_id %>
+  <b>Date:</b>
+  <%= @date %>
+
 </p>
 
-<p>
-  <b>Quantity:</b>
-  <%= @order_item.quantity %>
-</p>
+<table>
+  <tr>
+    <th>Quantity</th>
+    <th>Product</th>
+    <th>Customer</th>
+    <th>Order</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
 
-
-<%= link_to 'Edit', edit_order_item_path(@order_item) %> |
-<%= link_to 'Back', order_items_path %>
+<% @order_items.each do |order_item| %>
+<% if order_item.order.date == @date %>
+  <tr>
+    <td><%= order_item.quantity %></td>
+    <td><%= order_item.product.name %></td>
+    <td><%= order_item.order.customer %></td>
+    <td><%= order_item.order_id %></td>
+  </tr>
+<% end %>
+<% end %>
+</table>

@@ -1,42 +1,9 @@
-<h1>Listing order_items</h1>
+<h1>Generate Order Report by Date</h1>
 
 <p>
+  <%= form_tag('viewordersbydate') %>
   <b>Please select the date:</b>
-  <%= @date %>
-  
-</p>
-<p>
-  <%= date_select("order", "date") %>
-  <%= text_field :dia, :size => 40 %>
-  <td><%= link_to 'Index', :date => @date %></td>
+  <%= date_select :order, :date %>
+  <%= submit_tag "See order list" %>
 </p>
 
-<table>
-  <tr>
-    <th>Order</th>
-    <th>Product</th>
-    <th>Quantity</th>
-    <th>Date</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @order_items.each do |order_item| %>
-<% if order_item.order.date == @date %>
-  <tr>
-    <td><%= order_item.order_id %></td>
-    <td><%= order_item.product.name %></td>
-    <td><%= order_item.quantity %></td>
-    <td><%= order_item.order.date %></td>
-    <td><%= link_to 'Show', order_item, :date => params[:order] %></td>
-    <td><%= link_to 'Edit', edit_order_item_path(order_item) %></td>
-    <td><%= link_to 'Destroy', order_item, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Order item', new_order_item_path %> 

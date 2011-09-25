@@ -28,7 +28,8 @@ class OrdersController < ApplicationController
     @title = "Add Order"
     @order = Order.new
     @order_items = OrderItem.new
-    #2.times {@order.order_items.build}
+    #3.times {@order_items = OrderItem.new}
+    #@order.order_items.build
 
     respond_to do |format|
       format.html # new.html.erb

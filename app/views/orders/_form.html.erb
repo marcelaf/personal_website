@@ -19,22 +19,16 @@
     <%= f.label :date %><br />
     <%= f.date_select :date %>
   </div>
-  
-  
-  
+
   <table>
-  <%= fields_for :order_items do |l| %>
     <tr>
-    <td><%= f.label :quantity %></td>
-    <td><%= f.label :product %></td>
-    </tr>
-    <tr>
-    <td><%= l.text_field :quantity %></td>
-    <td><%= collection_select(:order_items, :product_id, Product.all, :id, :name, {:include_blank => true})  %></td>
-    </tr>
-  <% end %>
-    </table> 
-      
+      <td><%= f.label :quantity %></td>
+      <td><%= f.label :product %></td>
+     </tr>
+     <%= render :partial => 'items' %>
+
+  </table>
+
   <div class="actions">
     <%= f.submit %>
   </div>
