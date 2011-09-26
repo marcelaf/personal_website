@@ -52,12 +52,18 @@ class OrdersController < ApplicationController
     
     respond_to do |format|
       Order.transaction do
+        begin
         @order.save!
         @order_item.order_id = @order.id
         @order_item.save!
         format.html { redirect_to home_path, :notice => 'Order was successfully created.' }
-        format.json { render :json => @order, :status => :created, :location => @order }  
+        format.json { render :json => @order, :status => :created, :location => @order }
+        rescue
+        format.html { render :action => "new" }
+        format.json { render :json => @order.errors, :status => :unprocessable_entity }
+        end
       end
+
     end
     
     #respond_to do |format|

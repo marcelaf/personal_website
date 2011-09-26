@@ -82,10 +82,21 @@ nav ul li a:hover {
   text-decoration: underline;
 }
 
+h1 {
+    margin-left: 20px;
+    margin-top: 20px;
+    color: #336600;
+    display: inline-block;
+    float: center;
+
+}
+
 /* Round corners */
 
 .round {
   -moz-border-radius:    10px;
   -webkit-border-radius: 10px;
   border-radius:         10px;
+    margin-left: 20px;
+    margin-top: 20px;
 }
