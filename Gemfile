@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.0'
+gem 'pg'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -17,7 +18,6 @@ group :test do
   gem 'webrat', '0.7.1'
   gem 'factory_girl_rails', '1.0'
 end
-
 
 gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
 
